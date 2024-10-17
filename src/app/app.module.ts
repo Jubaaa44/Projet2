@@ -8,15 +8,15 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { provideCharts, withDefaultRegisterables, BaseChartDirective } from 'ng2-charts';
 import { CamembertChartComponent } from './camembert-chart/camembert-chart.component';
 import { RouterOutlet } from '@angular/router';
-
-
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    CamembertChartComponent
+    CamembertChartComponent,
+    LineChartComponent
       ],
   imports: [
     BrowserModule,
@@ -25,7 +25,7 @@ import { RouterOutlet } from '@angular/router';
     BrowserModule,
     BaseChartDirective,
     RouterOutlet
-  ],
+],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     provideCharts(withDefaultRegisterables())

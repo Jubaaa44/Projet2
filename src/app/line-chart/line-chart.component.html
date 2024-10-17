@@ -1,1 +1,39 @@
-<p>line-chart works!</p>
+<div class="header-container">
+    <h1>{{ country }}</h1>
+  </div>
+  
+  <div class="data-container">
+    <div class="data-item">
+      <h2>Number of entries</h2>
+      <p class="number">{{ totalParticipations }}</p> <!-- Affiche le nombre total de participations -->
+    </div>
+    
+    <div class="data-item">
+      <h2>Total number medals</h2>
+      <p class="number">{{ totalMedals }}</p> <!-- Affiche le nombre total de médailles -->
+    </div>
+  
+    <div class="data-item">
+      <h2>Total number of athletes</h2>
+      <p class="number">{{ totalAthletes }}</p> <!-- Affiche le nombre total d'athlètes -->
+    </div>
+  </div>
+  
+  <div *ngIf="chartData">
+    <canvas baseChart
+            [data]="chartData"
+            [options]="chartOptions"
+            [type]="chartOptions.type">
+    </canvas>
+  </div>
+  
+  <div *ngIf="!chartData">
+    <p>Aucune donnée disponible pour le moment.</p>
+  </div>
+
+<!-- Image avec un lien vers la page d'accueil -->
+<a routerLink="">
+    <img src="/assets/repondre.png" alt="Répondre" class="button-image" />
+</a>
+
+  

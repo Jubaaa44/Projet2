@@ -1,0 +1,71 @@
+
+  
+  :host {
+    display: block;
+    max-width: 600px;
+    margin: auto; /* Centrer le graphique */
+  }
+  
+  .header-container {
+    width: 100%; /* S'assure que le conteneur occupe toute la largeur */
+    max-width: 350px; /* Optionnel : si vous voulez limiter la largeur */
+    margin: auto; /* Centre le conteneur */
+  }
+  
+  h1 {
+    text-align: center; /* Centre le texte horizontalement */
+    background-color: #04838F; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 5px; /* Ajoute un espacement intérieur */
+    border-radius: 5px; /* Arrondit les coins de l'encadré */
+    margin: 0 5px; /* Réduit l'espacement à gauche et à droite */
+  }
+  
+  .data-container {
+    display: flex; /* Utilise Flexbox pour aligner les éléments côte à côte */
+    justify-content: center; /* Centre les éléments horizontalement */
+    margin: 20px 0; /* Espace entre le conteneur de données et le graphique */
+  }
+  
+  .data-item {
+    display: flex; /* Utilise Flexbox pour gérer l'alignement */
+    flex-direction: column; /* Aligne les éléments en colonne */
+    justify-content: center; /* Centre le contenu verticalement */
+    align-items: center; /* Centre le contenu horizontalement */
+    text-align: center; /* Centre le texte horizontalement */
+    border: 2px solid #04838F; /* Contour coloré */
+    background-color: transparent; /* Fond transparent */
+    color: black; /* Couleur du texte */
+    padding: 5px; /* Ajoute un espacement intérieur */
+    border-radius: 9px; /* Arrondit les coins de l'encadré */
+    margin: 0 10px; /* Espace entre les conteneurs */
+  }
+  
+  h2 {
+    font-size: 16px; /* Taille de police plus petite pour les titres */
+    margin: 0; /* Supprime la marge par défaut */
+    color: #636363; /* Couleur de texte plus claire pour le h2 */
+  }
+  
+  .number {
+    font-size: 24px; /* Taille de police pour le nombre */
+    margin: 1px 0 0 0; /* Réduit l'espace au-dessus du chiffre */
+    font-weight: bold; /* Rendre le nombre en gras */
+  }
+  
+  .button-image {
+    display: block; /* S'assure que l'image est traitée comme un bloc */
+    margin: 20px auto; /* Centre l'image horizontalement */
+    width: 40px; /* Largeur de l'image, ajustez selon vos besoins */
+    height: auto; /* Conserve le ratio de l'image */
+    border: 2px solid #04838F; /* Bordure colorée */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 5px; /* Espacement intérieur */
+    transition: background-color 0.3s, transform 0.3s; /* Transition douce pour le hover */
+}
+
+.button-image:hover {
+    background-color: #e0f7fa; /* Couleur de fond au survol */
+    transform: scale(1.05); /* Légère augmentation de la taille au survol */
+    cursor: pointer; /* Change le curseur pour indiquer un clic */
+}
