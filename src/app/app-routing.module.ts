@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'detail/:country', 
-    component: LineChartComponent, // Utilisation de LineChartComponent pour cette route
+    component: LineChartComponent,
   },
   {
     path: '**', // wildcard

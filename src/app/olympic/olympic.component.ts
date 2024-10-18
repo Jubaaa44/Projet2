@@ -11,7 +11,7 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   styleUrl: './olympic.component.scss'
 })
 export class OlympicComponent {
-  public olympics$!: Observable<Olympics[]>; // Changez le type en fonction de votre modèle
+  public olympics$!: Observable<Olympics[]>;
 
   constructor(private olympicService: OlympicService) {}
 
@@ -25,7 +25,7 @@ export class OlympicComponent {
         this.olympics$ = this.olympicService.getOlympics(); // Récupérer les données du BehaviorSubject
       },
       (error) => {
-        console.error('Erreur lors du chargement des données', error);
+        console.error('Erreur lors du chargement des données', error); // En cas d'erreur
       }
     );
   }

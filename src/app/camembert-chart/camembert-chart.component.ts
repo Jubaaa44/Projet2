@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Olympics } from '../core/models/Olympic';
 import { OlympicService } from '../core/services/olympic.service';
-import { Router } from '@angular/router'; // Import du Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-camembert-chart',
@@ -28,12 +28,14 @@ export class CamembertChartComponent implements OnInit {
     }
   };
 
+  // Nombre de Jeux Olympiques et nombre de pays
   public numberOfOlympics: number = 0;
   public numberOfCountries: number = 0;
 
   constructor(private router: Router, private olympicService: OlympicService) {}
 
   ngOnInit(): void {
+    // Récupération des données depuis le service
     this.olympicService.getOlympics().subscribe(
       (data: Olympics[]) => {
         if (data) {
@@ -42,11 +44,12 @@ export class CamembertChartComponent implements OnInit {
         }
       },
       (error) => {
-        console.error('Error loading Olympics data:', error);
+        console.error('Error loading Olympics data:', error); // en cas d'erreur
       }
     );
   }
 
+  // Initialise le graphique
   formatChartData(): void {
     if (this.olympics && this.olympics.length) {
       this.numberOfOlympics = this.olympics.reduce((total, olympic) => total + olympic.participations.length, 0);
@@ -60,18 +63,18 @@ export class CamembertChartComponent implements OnInit {
           data: this.olympics.map(olympic => 
             olympic.participations.reduce((total, participation) => total + participation.medalsCount, 0)
           ),
-          backgroundColor: ['#956065', '#B8CBE7', '#89A1DB', '#733C50', '#9780A1'],
+          backgroundColor: ['#956065', '#B8CBE7', '#89A1DB', '#733C50', '#9780A1'], // reprise des couleurs sur la maquette
         }]
       };
     }
   }
 
-    // Méthode pour naviguer vers les détails d'un pays
+    // naviguer vers les détails d'un pays
     navigateToCountryDetails(country: string): void {
       this.router.navigate(['detail', country]);
     }
 
-    // Exemple d'appel lors d'un clic sur un élément
+    // appel lors d'un clic sur un élément
     onChartClick(country: string): void {
       this.navigateToCountryDetails(country);
     }

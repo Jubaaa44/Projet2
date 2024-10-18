@@ -27,7 +27,7 @@ export class LineChartComponent implements OnInit {
   ngOnInit(): void {
     this.country = this.route.snapshot.paramMap.get('country')!; // Récupération du paramètre 'country'
     
-    // Récupération des données olympiques une seule fois
+    // Récupération des données olympiques
     this.olympicService.getOlympics().subscribe({
       next: (data: Olympics[]) => {
         if (data) {
@@ -54,11 +54,12 @@ export class LineChartComponent implements OnInit {
   public totalMedals: number = 0; // Nombre total de médailles
   public totalAthletes: number = 0; // Nombre total d'athlètes
 
+  // Initialise le graphique
   formatLineChartData(countryData: Olympics): void {
     // Calcule le nombre total de participations et de médailles
     this.totalParticipations = countryData.participations.length;
     this.totalMedals = countryData.participations.reduce((total, p) => total + p.medalsCount, 0);
-    this.totalAthletes = countryData.participations.reduce((total, p) => total + p.athleteCount, 0); // Assurez-vous que 'athletesCount' existe dans votre modèle
+    this.totalAthletes = countryData.participations.reduce((total, p) => total + p.athleteCount, 0);
   
     this.chartData = {
       labels: countryData.participations.map(p => p.year), // Années des participations
