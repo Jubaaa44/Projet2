@@ -1,2 +1,13 @@
-<h1> Olympic Games </h1>
-<router-outlet></router-outlet>
+<div class="app-container">
+    <h1>Olympic Games</h1>
+    
+    <ng-container *ngIf="isOnline; else offlineTemplate">
+      <!-- Affichage du contenu principal via le router outlet -->
+      <router-outlet></router-outlet>
+    </ng-container>
+  
+    <ng-template #offlineTemplate>
+      <app-offline></app-offline> <!-- Votre composant hors connexion -->
+    </ng-template>
+  </div>
+  

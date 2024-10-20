@@ -9,6 +9,7 @@ import { provideCharts, withDefaultRegisterables, BaseChartDirective } from 'ng2
 import { CamembertChartComponent } from './camembert-chart/camembert-chart.component';
 import { RouterOutlet } from '@angular/router';
 import { LineChartComponent } from './line-chart/line-chart.component';
+import { OfflineComponent } from './offline/offline.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     HomeComponent,
     NotFoundComponent,
     CamembertChartComponent,
-    LineChartComponent
+    LineChartComponent,
+    OfflineComponent
       ],
   imports: [
     BrowserModule,

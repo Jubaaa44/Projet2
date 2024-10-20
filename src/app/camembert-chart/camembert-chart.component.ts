@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Olympics } from '../core/models/Olympic';
 import { OlympicService } from '../core/services/olympic.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-camembert-chart',
   templateUrl: './camembert-chart.component.html',
   styleUrls: ['./camembert-chart.component.scss']
 })
-export class CamembertChartComponent implements OnInit {
+export class CamembertChartComponent implements OnInit, OnDestroy {
   public olympics!: Olympics[];
   public chartData: any;
   public chartOptions: any = {
@@ -32,11 +33,14 @@ export class CamembertChartComponent implements OnInit {
   public numberOfOlympics: number = 0;
   public numberOfCountries: number = 0;
 
+  // Subscription pour gérer l'abonnement
+  private subscription!: Subscription;
+
   constructor(private router: Router, private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    // Récupération des données depuis le service
-    this.olympicService.getOlympics().subscribe(
+    // Récupération des données depuis le service et sauvegarde de l'abonnement
+    this.subscription = this.olympicService.getOlympics().subscribe(
       (data: Olympics[]) => {
         if (data) {
           this.olympics = data;
@@ -47,12 +51,14 @@ export class CamembertChartComponent implements OnInit {
         console.error('Error loading Olympics data:', error); // en cas d'erreur
       }
     );
-
   }
-    ngOnDestroy():void {
-      // Desouscrire l'abonnement
-    }
 
+  ngOnDestroy(): void {
+    // Désabonnement au service
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
   // Initialise le graphique
   formatChartData(): void {
@@ -74,13 +80,13 @@ export class CamembertChartComponent implements OnInit {
     }
   }
 
-    // naviguer vers les détails d'un pays
-    navigateToCountryDetails(country: string): void {
-      this.router.navigate(['detail', country]);
-    }
+  // Naviguer vers les détails d'un pays
+  navigateToCountryDetails(country: string): void {
+    this.router.navigate(['detail', country]);
+  }
 
-    // appel lors d'un clic sur un élément
-    onChartClick(country: string): void {
-      this.navigateToCountryDetails(country);
-    }
+  // Appel lors d'un clic sur un élément
+  onChartClick(country: string): void {
+    this.navigateToCountryDetails(country);
+  }
 }

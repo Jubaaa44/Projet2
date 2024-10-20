@@ -1,0 +1,46 @@
+.offline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    text-align: center;
+    background-color: #f8d7da; /* Couleur de fond pour signaler l'erreur */
+    color: #721c24; /* Couleur du texte */
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      margin: 0.5rem 0;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+  
+      li {
+        margin: 0.5rem 0;
+      }
+    }
+  
+    button {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background-color: #5c6bc0; /* Couleur du bouton */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #3f51b5; /* Couleur au survol */
+      }
+    }
+  }
+  
