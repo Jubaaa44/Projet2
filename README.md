@@ -1,29 +1,28 @@
-# OlympicGamesStarter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+---------------------------- README ----------------------------
+---------- ABBACI Juba, Etudiant chez Openclassrooms -----------
+--- Projet 2 : Développer le Front-End en utilisant Angular ----
 
-Don't forget to install your node_modules before starting (`npm install`).
+Instructions à suivre pour pouvoir lancer le projet :
+	--> S'assurer que node soit correctement installé
+		Si ce n'est pas le cas, lien nécessaire ci-dessous
+			https://nodejs.org/fr
 
-## Development server
+	--> S'assurer que le Angular CLI soit correctement installé
+		Si ce n'est pas le cas, commande nécessaire ci-dessous
+			npm install -g @angular/cli
+		
+	--> Après avoir récupéré le projet, exécuter le commande suivante depuis le dossier du projet :
+		npm install
+		
+	--> Lancer le serveur avec la commande suivante :
+		ng serve
+		
+	RDV sur l'url http://localhost:4200/ !
+	
+	
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Where to start
-
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
-
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
-
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
-
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
-
-You're now ready to implement the requested features.
-
-Good luck!
+Fonctionnalités du projet :
+	--> Affichage du dashboard comportant un diagramme en pie, avec chaque partie cliquable.
+	--> Une page "Détail" comportant un diagramme en line à la suite du click sur une partie (un bouton de retour en arrière est présent).
+	--> La gestion du cas Hors-Connexion, avec l'affichage d'un message spécifique.
