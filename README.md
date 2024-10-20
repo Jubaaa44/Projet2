@@ -1,7 +1,7 @@
 
----------------------------- README ----------------------------
----------- ABBACI Juba, Etudiant chez Openclassrooms -----------
---- Projet 2 : Développer le Front-End en utilisant Angular ----
+---------------------------------------------------- README ----------------------------------------------------
+---------------------------------- ABBACI Juba, Etudiant chez Openclassrooms -----------------------------------
+--------------------------- Projet 2 : Développer le Front-End en utilisant Angular ----------------------------
 
 Instructions à suivre pour pouvoir lancer le projet :
 	--> S'assurer que node soit correctement installé
@@ -23,6 +23,9 @@ Instructions à suivre pour pouvoir lancer le projet :
 	
 
 Fonctionnalités du projet :
+
 	--> Affichage du dashboard comportant un diagramme en pie, avec chaque partie cliquable.
+
 	--> Une page "Détail" comportant un diagramme en line à la suite du click sur une partie (un bouton de retour en arrière est présent).
+ 
 	--> La gestion du cas Hors-Connexion, avec l'affichage d'un message spécifique.
