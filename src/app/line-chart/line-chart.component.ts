@@ -8,6 +8,7 @@ import { Olympics } from '../core/models/Olympic';
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss']
 })
+
 export class LineChartComponent implements OnInit {
   public olympics!: Olympics[];
   public country!: string;
