@@ -1,7 +1,7 @@
 
 ------------------------------------------------------------------------------- README --------------------------------------------------------------------
 --------------------------------------------------------------- ABBACI Juba, Etudiant chez Openclassrooms -------------------------------------------------
---------------------------------------------------------- Projet 2 : Développer le Front-End en utilisant Angular -----------------------------------------
+------------------------------------------------------- Projet 2 : Développer le Front-End en utilisant Angular -------------------------------------------
 
 Instructions à suivre pour pouvoir lancer le projet :
 	--> S'assurer que node soit correctement installé
