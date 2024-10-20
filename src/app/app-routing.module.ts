@@ -7,14 +7,14 @@ import { OfflineComponent } from './offline/offline.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', // Dashboard
     component: HomeComponent,
   },
   {
-    path: 'detail/:country', 
+    path: 'detail/:country', // Détail
     component: LineChartComponent,
   },
-  { path: 'offline', 
+  { path: 'offline', // Page hors connexion
     component: OfflineComponent,
   },
   {
