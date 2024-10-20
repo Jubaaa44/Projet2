@@ -47,7 +47,12 @@ export class CamembertChartComponent implements OnInit {
         console.error('Error loading Olympics data:', error); // en cas d'erreur
       }
     );
+
   }
+    ngOnDestroy():void {
+      // Desouscrire l'abonnement
+    }
+
 
   // Initialise le graphique
   formatChartData(): void {
