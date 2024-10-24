@@ -9,7 +9,7 @@ import { ConnectionService } from './core/services/connection.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  isOnline: boolean = true; // Déclarez la variable pour l'état de connexion
+  isOnline: boolean = true;
 
   constructor(private olympicService: OlympicService, private connectionService: ConnectionService) {
     // Souscrire à l'état de connexion
