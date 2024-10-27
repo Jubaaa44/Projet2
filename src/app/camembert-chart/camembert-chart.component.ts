@@ -3,6 +3,12 @@ import { Olympics } from '../core/models/Olympic';
 import { OlympicService } from '../core/services/olympic.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ChartData, ChartOptions, ChartDataset } from 'chart.js';
+
+// Interface pour les jeux de données
+interface CustomChartDataset extends ChartDataset<'pie', number[]> {
+  id: number[]; // Ajoutez ici la propriété id
+}
 
 @Component({
   selector: 'app-camembert-chart',
@@ -11,21 +17,19 @@ import { Subscription } from 'rxjs';
 })
 export class CamembertChartComponent implements OnInit, OnDestroy {
   public olympics!: Olympics[];
-  public chartData: any;
-  public chartOptions: any = {
+  public chartData!: ChartData<'pie', number[]>;
+  public chartOptions: ChartOptions<'pie'> = {
     responsive: true,
-    type: 'pie',
     plugins: {
       legend: {
         display: false,
       },
     },
-    onClick: (event: any, activeElements: any[]) => {
+    onClick: (event, activeElements) => {
       if (activeElements.length > 0) {
         const chartElement = activeElements[0];
-        const countryId = this.chartData.datasets[0].id[chartElement.index];
+        const countryId = (this.chartData.datasets[0] as CustomChartDataset).id[chartElement.index];
         this.navigateToCountryDetails(countryId);
-
       }
     }
   };
@@ -72,12 +76,12 @@ export class CamembertChartComponent implements OnInit, OnDestroy {
       this.chartData = {
         labels: this.olympics.map(olympic => olympic.country),
         datasets: [{
-          id: this.olympics.map(olympic => olympic.id),
+          id: this.olympics.map(olympic => olympic.id), // Ici vous pouvez utiliser id
           data: this.olympics.map(olympic => 
             olympic.participations.reduce((total, participation) => total + participation.medalsCount, 0)
           ),
           backgroundColor: ['#956065', '#B8CBE7', '#89A1DB', '#733C50', '#9780A1'], // reprise des couleurs sur la maquette
-        }]
+        } as CustomChartDataset] // Cast to CustomChartDataset here
       };
     }
   }

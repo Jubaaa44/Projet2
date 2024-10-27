@@ -1,39 +1,37 @@
 <div class="header-container">
-    <h1>{{ countryName }}</h1>
+  <h1>{{ countryName }}</h1>
+</div>
+
+<div class="data-container">
+  <div class="data-item">
+    <h2>Number of entries</h2>
+    <p class="number">{{ totalParticipations }}</p> <!-- Nombre total de participations -->
   </div>
   
-  <div class="data-container">
-    <div class="data-item">
-      <h2>Number of entries</h2>
-      <p class="number">{{ totalParticipations }}</p> <!-- nombre total de participations -->
-    </div>
-    
-    <div class="data-item">
-      <h2>Total number medals</h2>
-      <p class="number">{{ totalMedals }}</p> <!-- nombre total de médailles -->
-    </div>
-  
-    <div class="data-item">
-      <h2>Total number of athletes</h2>
-      <p class="number">{{ totalAthletes }}</p> <!-- nombre total d'athlètes -->
-    </div>
+  <div class="data-item">
+    <h2>Total number of medals</h2>
+    <p class="number">{{ totalMedals }}</p> <!-- Nombre total de médailles -->
   </div>
-  
-  <div *ngIf="chartData">
-    <canvas baseChart
-            [data]="chartData"
-            [options]="chartOptions"
-            [type]="chartOptions.type">
-    </canvas>
+
+  <div class="data-item">
+    <h2>Total number of athletes</h2>
+    <p class="number">{{ totalAthletes }}</p> <!-- Nombre total d'athlètes -->
   </div>
-  
-  <div *ngIf="!chartData">
-    <p>Aucune donnée disponible pour le moment.</p>
-  </div>
+</div>
+
+<div *ngIf="chartData">
+  <canvas baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [type]="'line'"> <!-- Ajout de guillemets manquants ici -->
+  </canvas>
+</div>
+
+<div *ngIf="!chartData">
+  <p>Aucune donnée disponible pour le moment.</p>
+</div>
 
 <!-- Image avec un lien vers la page d'accueil -->
 <a routerLink="">
-    <img src="/assets/retour.png" alt="Répondre" class="button-image" />
+  <img src="/assets/retour.png" alt="Retour" class="button-image" />
 </a>
-
-  

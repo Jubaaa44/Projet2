@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OlympicService } from '../core/services/olympic.service';
 import { Olympics } from '../core/models/Olympic';
 import { Subscription } from 'rxjs';
+import { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-line-chart',
@@ -12,10 +13,9 @@ import { Subscription } from 'rxjs';
 export class LineChartComponent implements OnInit, OnDestroy {
   public olympics!: Olympics[];
   public idCountry!: number;
-  public countryName!: string; // Nouvelle propriété pour le nom du pays
-  public chartData: any;
-  public chartOptions: any = {
-    type: 'line',
+  public countryName!: string; // Nom du pays
+  public chartData!: ChartData<'line'>; // Typé comme ChartData pour un graphique en ligne
+  public chartOptions: ChartOptions = { // Typé pour éviter les erreurs
     responsive: true,
     plugins: {
       legend: {
@@ -24,15 +24,14 @@ export class LineChartComponent implements OnInit, OnDestroy {
     },
   };
 
-  // Subscription pour gérer l'abonnement
   private subscription!: Subscription;
 
   constructor(private route: ActivatedRoute, private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    this.idCountry = +this.route.snapshot.paramMap.get('idCountry')!; // Récupération du paramètre 'country'
-    
-    // Récupération des données olympiques et sauvegarde de l'abonnement
+    this.idCountry = +this.route.snapshot.paramMap.get('idCountry')!;
+
+    // Récupération des données olympiques
     this.subscription = this.olympicService.getOlympics().subscribe({
       next: (data: Olympics[]) => {
         if (data) {
@@ -47,7 +46,7 @@ export class LineChartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Désabonnement pour éviter les fuites de mémoire
+    // Désabonnement
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
