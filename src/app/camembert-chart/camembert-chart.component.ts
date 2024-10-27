@@ -23,8 +23,9 @@ export class CamembertChartComponent implements OnInit, OnDestroy {
     onClick: (event: any, activeElements: any[]) => {
       if (activeElements.length > 0) {
         const chartElement = activeElements[0];
-        const country = this.chartData.labels[chartElement.index];
-        this.navigateToCountryDetails(country);
+        const countryId = this.chartData.datasets[0].id[chartElement.index];
+        this.navigateToCountryDetails(countryId);
+
       }
     }
   };
@@ -71,6 +72,7 @@ export class CamembertChartComponent implements OnInit, OnDestroy {
       this.chartData = {
         labels: this.olympics.map(olympic => olympic.country),
         datasets: [{
+          id: this.olympics.map(olympic => olympic.id),
           data: this.olympics.map(olympic => 
             olympic.participations.reduce((total, participation) => total + participation.medalsCount, 0)
           ),
@@ -81,12 +83,12 @@ export class CamembertChartComponent implements OnInit, OnDestroy {
   }
 
   // Naviguer vers les détails d'un pays
-  navigateToCountryDetails(country: string): void {
-    this.router.navigate(['detail', country]);
+  navigateToCountryDetails(idCountry: number): void {
+    this.router.navigate(['detail', idCountry]);
   }
 
   // Appel lors d'un clic sur un élément
-  onChartClick(country: string): void {
-    this.navigateToCountryDetails(country);
+  onChartClick(idCountry: number): void {
+    this.navigateToCountryDetails(idCountry);
   }
 }

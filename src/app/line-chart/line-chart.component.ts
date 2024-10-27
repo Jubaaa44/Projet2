@@ -9,10 +9,10 @@ import { Subscription } from 'rxjs';
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss']
 })
-
 export class LineChartComponent implements OnInit, OnDestroy {
   public olympics!: Olympics[];
-  public country!: string;
+  public idCountry!: number;
+  public countryName!: string; // Nouvelle propriété pour le nom du pays
   public chartData: any;
   public chartOptions: any = {
     type: 'line',
@@ -30,7 +30,7 @@ export class LineChartComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    this.country = this.route.snapshot.paramMap.get('country')!; // Récupération du paramètre 'country'
+    this.idCountry = +this.route.snapshot.paramMap.get('idCountry')!; // Récupération du paramètre 'country'
     
     // Récupération des données olympiques et sauvegarde de l'abonnement
     this.subscription = this.olympicService.getOlympics().subscribe({
@@ -54,11 +54,12 @@ export class LineChartComponent implements OnInit, OnDestroy {
   }
 
   loadCountryMedalsData(): void {
-    const countryData = this.olympics.find((olympic: Olympics) => olympic.country === this.country);
+    const countryData = this.olympics.find((olympic: Olympics) => olympic.id === this.idCountry);
     if (countryData) {
+      this.countryName = countryData.country; // Récupérer le nom du pays
       this.formatLineChartData(countryData);
     } else {
-      console.error(`No data found for country: ${this.country}`);
+      console.error(`No data found for country: ${this.idCountry}`);
     }
   }
 
@@ -76,7 +77,7 @@ export class LineChartComponent implements OnInit, OnDestroy {
     this.chartData = {
       labels: countryData.participations.map(p => p.year), // Années des participations
       datasets: [{
-        label: `Médailles de ${this.country}`,
+        label: `Médailles de ${this.countryName}`, // Afficher le nom du pays ici
         data: countryData.participations.map(p => p.medalsCount),
         borderColor: '#42A5F5',
         fill: false

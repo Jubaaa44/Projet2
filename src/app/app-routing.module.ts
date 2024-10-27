@@ -11,7 +11,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'detail/:country', // Détail
+    path: 'detail/:idCountry', // Détail
     component: LineChartComponent,
   },
   { path: 'offline', // Page hors connexion
