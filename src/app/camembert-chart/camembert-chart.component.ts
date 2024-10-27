@@ -7,7 +7,7 @@ import { ChartData, ChartOptions, ChartDataset } from 'chart.js';
 
 // Interface pour les jeux de données
 interface CustomChartDataset extends ChartDataset<'pie', number[]> {
-  id: number[]; // Ajoutez ici la propriété id
+  id: number[];
 }
 
 @Component({
